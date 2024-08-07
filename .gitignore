@@ -1,6 +1,8 @@
-### Project
-
-*/**
-
-!raw-recording-sample.patch
 !README.md
+
+Release/
+vcpkg_installed/
+.vs/
+
+config.yaml
+credentials.yaml
