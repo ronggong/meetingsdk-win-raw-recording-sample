@@ -9,11 +9,13 @@ CustomizedUIRecordMgr* CustomizedUIRecordMgr::s_recordMgrObj=NULL;
 CustomizedUIRecordMgr::CustomizedUIRecordMgr()
 {
 	m_pRecordController = NULL;
+	m_workerMgr = new WorkerManager();
+	m_workerMgr->start();
 }
 
 CustomizedUIRecordMgr::~CustomizedUIRecordMgr()
 {
-
+	delete m_workerMgr;
 }
 
 CustomizedUIRecordMgr* CustomizedUIRecordMgr::GetInstance()
@@ -324,8 +326,8 @@ void CustomizedUIRecordMgr::onRecordPrivilegeChanged(bool bCanRec)
 		const auto record_ctrl = SDKInterfaceWrap::GetInst().GetMeetingService()->GetMeetingRecordingController();
 		if(record_ctrl->StartRawRecording() != ZOOMSDK::SDKERR_SUCCESS) return;
 		
-		cout << "Starting Raw Recording" << endl; 
-		const auto delegate = new ZoomSDKAudioRawDataDelegate();
+		cout << "Starting Raw Recording" << endl;
+		const auto delegate = new ZoomSDKAudioRawDataDelegate(m_workerMgr);
 		const auto helper = ZOOM_SDK_NAMESPACE::GetAudioRawdataHelper();
 		
 		helper->subscribe(delegate);

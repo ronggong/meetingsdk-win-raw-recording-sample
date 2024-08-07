@@ -1,7 +1,8 @@
 {
   "dependencies": [
+    "boost",
     "jwt-cpp",
     "yaml-cpp",
-    "boost"
+    "soxr"
   ]
 }

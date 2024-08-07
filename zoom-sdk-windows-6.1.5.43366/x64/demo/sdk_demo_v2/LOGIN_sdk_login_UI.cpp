@@ -316,11 +316,11 @@ void CSDKWithoutLoginStartJoinMeetingUIGroup::onMeetingStatusChanged(ZOOM_SDK_NA
 						return;
 					}
 		
-					cout << "Starting Raw Recording" << endl; 
-					const auto delegate = new ZoomSDKAudioRawDataDelegate();
-					const auto helper = ZOOM_SDK_NAMESPACE::GetAudioRawdataHelper();
+					//cout << "Starting Raw Recording" << endl; 
+					//const auto delegate = new ZoomSDKAudioRawDataDelegate();
+					//const auto helper = ZOOM_SDK_NAMESPACE::GetAudioRawdataHelper();
 		
-					helper->subscribe(delegate);	
+					//helper->subscribe(delegate);	
 				} else {
 					cout << "Requesting Recording Privilege" << endl;
 					record_ctrl->RequestLocalRecordingPrivilege();

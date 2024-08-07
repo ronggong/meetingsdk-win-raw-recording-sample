@@ -258,6 +258,8 @@
     <ClCompile Include="ZoomAPI.cpp" />
     <ClCompile Include="ZoomAuthenticator.cpp" />
     <ClCompile Include="ZoomSDKAudioRawDataDelegate.cpp" />
+    <ClCompile Include="WorkerManager.cpp" />
+    <ClCompile Include="AudioUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnnotateBarWindow.h" />
@@ -327,6 +329,9 @@
     <ClInclude Include="ZoomAPI.h" />
     <ClInclude Include="ZoomAuthenticator.h" />
     <ClInclude Include="ZoomSDKAudioRawDataDelegate.h" />
+    <ClInclude Include="WorkerManager.h" />
+    <ClInclude Include="ThreadSafeQueue.h" />
+    <ClInclude Include="AudioUtil.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="sdk_demo_v2.rc" />

@@ -327,6 +327,12 @@
     <ClCompile Include="ZoomSDKAudioRawDataDelegate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WorkerManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioUtil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sdk_demo_app.h">
@@ -528,6 +534,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ZoomAuthenticator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadSafeQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorkerManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioUtil.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

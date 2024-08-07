@@ -2,6 +2,7 @@
 
 #include "stdafx.h"
 #include "sdk_util.h"
+#include "WorkerManager.h"
 
 class CustomizedUIRecordMgr : 
 	public ZOOM_SDK_NAMESPACE::IMeetingRecordingCtrlEvent
@@ -46,4 +47,5 @@ private:
 	static CustomizedUIRecordMgr* s_recordMgrObj;
 	time_t m_rcdStartTime; 
 	ZOOM_SDK_NAMESPACE::IMeetingRecordingController* m_pRecordController;
+	WorkerManager* m_workerMgr;
 };
