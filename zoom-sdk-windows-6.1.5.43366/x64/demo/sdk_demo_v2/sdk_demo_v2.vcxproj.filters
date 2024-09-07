@@ -333,6 +333,15 @@
     <ClCompile Include="AudioUtil.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SileroVad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fft.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Sed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sdk_demo_app.h">
@@ -544,6 +553,18 @@
     </ClInclude>
     <ClInclude Include="AudioUtil.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SileroVad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fft.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fbank.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Sed.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

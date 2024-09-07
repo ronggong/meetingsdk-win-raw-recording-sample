@@ -19,12 +19,16 @@ void AudioUtil::convertPCM16ToFloat(const std::vector<char>& pcmData, std::vecto
     floatData.resize(numSamples);
 
     // Convert each 16-bit sample to float
-    for (std::size_t i = 0; i < numSamples; ++i) {
-        // Extract the 16-bit sample (assuming little-endian format)
-        int16_t sample = static_cast<int16_t>(pcmData[2 * i] | (pcmData[2 * i + 1] << 8));
+    //for (std::size_t i = 0; i < numSamples; ++i) {
+    //    // Extract the 16-bit sample (assuming little-endian format)
+    //    int16_t sample = static_cast<int16_t>(pcmData[2 * i] | (pcmData[2 * i + 1] << 8));
 
-        // Convert the 16-bit sample to float in the range -1.0 to 1.0
-        floatData[i] = sample / 32768.0f;
+    //    // Convert the 16-bit sample to float in the range -1.0 to 1.0
+    //    floatData[i] = float(sample) / 32768.0f;
+    //}
+    for (size_t i = 0; i < length; i += 2) {
+        int16_t sample = *(int16_t*)(&pcmData[0] + i);
+        floatData[i/2] = sample / 32768.0f;
     }
 }
 
@@ -42,7 +46,7 @@ Resampler::~Resampler() {
 	soxr_delete(soxr_);
 }
 
-void Resampler::process(const float* ibuf, const size_t ilen, float* obuf, const size_t olen) {
+void Resampler::process(const float* ibuf, const size_t ilen, float* obuf, size_t& olen) {
     size_t odone;
     soxr_error_t error = soxr_process(soxr_, ibuf, ilen, NULL, obuf, olen, &odone);
 
@@ -51,6 +55,7 @@ void Resampler::process(const float* ibuf, const size_t ilen, float* obuf, const
     }
 
     if (odone < olen) {
-        std::cerr << "Resampler did not process all samples." << std::endl;
+        olen = odone;
+        std::cerr << "Resampler did not process all samples, processed samples " << odone << std::endl;
     }
 }

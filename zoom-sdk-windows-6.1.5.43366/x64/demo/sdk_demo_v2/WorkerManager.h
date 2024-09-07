@@ -3,7 +3,16 @@
 #include "ThreadSafeQueue.h"
 #include <thread>
 #include <atomic>
+#include <memory>
+#include <queue>
 #include "AudioUtil.h"
+
+class VadIterator;
+class Sed;
+
+namespace wenet {
+    class Fbank;
+}
 
 class WorkerManager {
 public:
@@ -24,4 +33,17 @@ private:
     ThreadSafeQueue<AudioData> audioDataQueue_;
 
     Resampler resampler_;
+    std::unique_ptr<VadIterator> vad_;
+    std::queue<float> vadData_;
+    std::vector<float> wavData_;
+    int speechTimestamps_ = -1;
+    std::unique_ptr<wenet::Fbank> fbank_;
+
+    struct SpeechBuffer {
+        std::queue<float> data;
+        size_t offset; // start index of sample stream
+        size_t maxSz; // max size of the buffer
+    } speechBuffer_;
+
+    std::unique_ptr<Sed> sed_;
 };

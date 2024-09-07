@@ -188,6 +188,10 @@
     <Manifest>
       <AdditionalManifestFiles>zoom.manifest</AdditionalManifestFiles>
     </Manifest>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AnnotateBarWindow.cpp" />
@@ -260,6 +264,9 @@
     <ClCompile Include="ZoomSDKAudioRawDataDelegate.cpp" />
     <ClCompile Include="WorkerManager.cpp" />
     <ClCompile Include="AudioUtil.cpp" />
+    <ClCompile Include="SileroVad.cpp" />
+    <ClCompile Include="fft.cpp" />
+    <ClCompile Include="Sed.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnnotateBarWindow.h" />
@@ -332,6 +339,10 @@
     <ClInclude Include="WorkerManager.h" />
     <ClInclude Include="ThreadSafeQueue.h" />
     <ClInclude Include="AudioUtil.h" />
+    <ClInclude Include="SileroVad.h" />
+    <ClInclude Include="fft.h" />
+    <ClInclude Include="fbank.h" />
+    <ClInclude Include="Sed.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="sdk_demo_v2.rc" />
