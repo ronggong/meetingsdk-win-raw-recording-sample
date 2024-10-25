@@ -6,6 +6,7 @@
 #include <memory>
 #include <queue>
 #include "AudioUtil.h"
+#include "TCPClient.h"
 
 class VadIterator;
 class Sed;
@@ -46,4 +47,7 @@ private:
     } speechBuffer_;
 
     std::unique_ptr<Sed> sed_;
+    std::vector<float> sedThreshold_{0.42, 0.35, 0.37, 0.37, 0.4};
+
+    std::unique_ptr<TCPClient> client_;
 };

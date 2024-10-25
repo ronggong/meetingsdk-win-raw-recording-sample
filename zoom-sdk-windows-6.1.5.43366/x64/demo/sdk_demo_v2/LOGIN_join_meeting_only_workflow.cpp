@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "LOGIN_join_meeting_only_workflow.h"
+#include <iostream>
 
 CSDKWithoutLoginStartJoinMeetingFlow::CSDKWithoutLoginStartJoinMeetingFlow()
 {
@@ -61,6 +62,18 @@ ZOOM_SDK_NAMESPACE::SDKError CSDKWithoutLoginStartJoinMeetingFlow::JoinMeeting(Z
 				if(pAudioContext)
 				{
 					pAudioContext->EnableAutoJoinAudio(true);
+					float speakerVol;
+					float micVol;
+					pAudioContext->GetSpeakerVol(speakerVol);
+					pAudioContext->GetMicVol(micVol);
+					std::cout << "Speaker Vol: " << speakerVol << std::endl;
+					std::cout << "Mic Vol: " << micVol << std::endl;
+					auto suppressLevel = pAudioContext->GetSuppressBackgroundNoiseLevel();
+					std::cout << "Suppress background noise level: " << suppressLevel << std::endl;
+					auto ecLevel = pAudioContext->GetEchoCancellationLevel();
+					std::cout << "Echo cancellation level: " << ecLevel << std::endl;
+					auto audioSignalProcessType = pAudioContext->GetAudioSignalProcessType();
+					std::cout << "Audio signal process type: " << audioSignalProcessType << std::endl;
 				}
 			}
 			ZOOM_SDK_NAMESPACE::SDKError err = ZOOM_SDK_NAMESPACE::SDKERR_SUCCESS;

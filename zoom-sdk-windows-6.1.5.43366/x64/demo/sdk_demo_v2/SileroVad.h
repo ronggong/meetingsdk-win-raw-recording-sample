@@ -152,8 +152,8 @@ public:
         int Sample_rate = 16000, 
         int windows_frame_size = 32,
         float Threshold = 0.5, 
-        int min_silence_duration_ms = 1000, // silence timeout
+        int min_silence_duration_ms = 500, // silence timeout
         int speech_pad_ms = 32, 
         int min_speech_duration_ms = 1000,
-        float max_speech_duration_s = 7); // std::numeric_limits<float>::infinity());
+        float max_speech_duration_s = 5); // std::numeric_limits<float>::infinity());
 };

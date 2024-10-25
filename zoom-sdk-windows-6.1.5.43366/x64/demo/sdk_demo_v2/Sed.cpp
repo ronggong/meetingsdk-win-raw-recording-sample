@@ -1,6 +1,14 @@
 #include "stdafx.h"
 #include "Sed.h"
 
+const std::unordered_map<size_t, std::string> Sed::sed_labels = {
+        {0, "/p"},
+        {1, "/b"},
+        {2, "/r"},
+        {3, "[]"},
+        {4, "/i"}
+};
+
 void Sed::init_engine_threads(int inter_threads, int intra_threads)
 {
     // The method should be called in each thread/proc in multi-thread/proc work

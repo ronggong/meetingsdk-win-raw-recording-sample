@@ -19,6 +19,6 @@ LPCTSTR ZoomAuthenticator::getJwt()
     .set_payload_claim("appKey",claim(sdk_key))
     .set_payload_claim("tokenExp", claim(exp))
     .sign(algorithm::hs256{sdk_secret});
-    
+
     return config->widenStr(token).c_str();
 }

@@ -15,4 +15,5 @@ public:
     virtual void onOneWayInterpreterAudioRawDataReceived(AudioRawData* data_, const zchar_t* pLanguageName) override;
 private:
     WorkerManager* manager_;
+    uint32_t node_id_ = 0;
 };

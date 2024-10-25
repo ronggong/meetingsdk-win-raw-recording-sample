@@ -566,6 +566,15 @@
     <ClInclude Include="Sed.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="WebSocketServer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPServer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TCPClient.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="sdk_demo_v2.rc">

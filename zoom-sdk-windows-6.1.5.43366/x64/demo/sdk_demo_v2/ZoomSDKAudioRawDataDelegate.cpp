@@ -10,13 +10,19 @@ ZoomSDKAudioRawDataDelegate::ZoomSDKAudioRawDataDelegate(WorkerManager* manager)
 
 void ZoomSDKAudioRawDataDelegate::onMixedAudioRawDataReceived(AudioRawData* data_)
 {
-    //cout << "sampling rate " << data_->GetSampleRate() << " channel num " << data_->GetChannelNum() << endl;
-    AudioData audioData(data_->GetBuffer(), data_->GetBufferLen(), data_->GetSampleRate(), data_->GetChannelNum());
-    manager_->getAudioQueue().push(audioData);
 }
 
 void ZoomSDKAudioRawDataDelegate::onOneWayAudioRawDataReceived(AudioRawData* data_, uint32_t node_id)
 {
+    if (node_id_ == 0) {
+        node_id_ = node_id;
+    }
+
+    if (node_id_ == node_id) {
+        //cout << "sampling rate " << data_->GetSampleRate() << " channel num " << data_->GetChannelNum() << endl;
+        AudioData audioData(data_->GetBuffer(), data_->GetBufferLen(), data_->GetSampleRate(), data_->GetChannelNum());
+        manager_->getAudioQueue().push(audioData);
+    }
 }
 
 void ZoomSDKAudioRawDataDelegate::onShareAudioRawDataReceived(AudioRawData* data_)

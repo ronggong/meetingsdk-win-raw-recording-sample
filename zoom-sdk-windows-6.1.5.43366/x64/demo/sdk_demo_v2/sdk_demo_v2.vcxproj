@@ -343,6 +343,9 @@
     <ClInclude Include="fft.h" />
     <ClInclude Include="fbank.h" />
     <ClInclude Include="Sed.h" />
+    <ClInclude Include="WebSocketServer.h" />
+    <ClInclude Include="TCPServer.h" />
+    <ClInclude Include="TCPClient.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="sdk_demo_v2.rc" />

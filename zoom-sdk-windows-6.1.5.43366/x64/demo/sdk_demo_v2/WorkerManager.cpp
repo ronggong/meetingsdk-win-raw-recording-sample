@@ -48,6 +48,8 @@ void WorkerManager::processAudioData() {
         fbank_ = std::make_unique<wenet::Fbank>(80, 16000, 400, 160); // 25ms frame, 10ms shift
 
         speechBuffer_ = { std::queue<float>(), 0, 2 * vad_->get_max_speech_samples() };
+
+        client_ = std::make_unique<TCPClient>("127.0.0.1", 12345);
     }
 
     if (!sed_) {
@@ -122,10 +124,23 @@ void WorkerManager::processAudioData() {
                 speechBuffer_.offset = end;
 
                 std::cout << "Speech segment detected start " << start << " dur " << duration << " fbank frames " << feat.size() << " Sed prob ";
-                for (size_t i = 0; i < sedProb.size(); i++) {
-                    std::cout << sedProb[i] << " ";
+                if (sedProb.size() != sedThreshold_.size()) {
+                    throw std::runtime_error("Sed prob size is not equal to the threshold size");
                 }
-                std::cout << std::endl;
+
+                std::string proba;
+                std::string sendLabel;
+                for (size_t i = 0; i < sedProb.size(); i++) {
+                    proba += std::to_string(sedProb[i]) + " ";
+                    if (sedProb[i] > sedThreshold_[i]) {
+                        sendLabel += Sed::sed_labels.at(i) + " ";
+                    }
+                }
+                std::cout << proba << std::endl;
+                if (!sendLabel.empty()) {
+                    sendLabel.pop_back();
+                    client_->sendMessage(sendLabel);
+                }
 
                 /*
                 auto testWav = fs::current_path() / ("output_" + std::to_string(start) + "_" + std::to_string(end) +  ".wav");
@@ -156,5 +171,6 @@ void WorkerManager::processAudioData() {
             }
         }
         */
+        
     }
 }

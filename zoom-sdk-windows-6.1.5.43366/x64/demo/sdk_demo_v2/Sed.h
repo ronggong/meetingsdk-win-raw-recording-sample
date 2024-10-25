@@ -8,7 +8,6 @@
 
 #include "onnxruntime_cxx_api.h"
 
-
 class Sed
 {
 private:
@@ -42,4 +41,6 @@ private:
 public:
     // Construction
     Sed(const std::wstring ModelPath);
+
+    static const std::unordered_map<size_t, std::string> sed_labels;
 };
